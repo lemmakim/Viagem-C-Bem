@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Premium V8: Itaúnas - Lucas e Shayene</title>
+    <title>Guia Premium V10 (Teste Accordion): Itaúnas - Lucas e Shayene</title>
     <style>
         :root {
             --primary: #e67e22;
@@ -89,21 +89,49 @@
             padding: 15px 25px;
         }
 
+        /* Estrutura do Acordeão (Dia Retrátil) */
         .day-section {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
         }
 
         .day-header {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 12px;
+            padding: 14px 18px;
+            background-color: #ffffff;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: relative;
+        }
+
+        .day-header:hover {
+            background-color: #fafafa;
+        }
+
+        .day-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .day-header-left {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .day-header span {
+        .day-header-left span {
             background-color: var(--primary);
             color: white;
             padding: 3px 8px;
@@ -111,6 +139,49 @@
             font-size: 13px;
         }
 
+        .accordion-icon {
+            font-size: 14px;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        .sun-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 2px;
+        }
+
+        .day-body {
+            padding: 15px 18px;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+        }
+
+        .day-section.collapsed .day-body {
+            display: none;
+        }
+
+        .day-section.collapsed .accordion-icon {
+            transform: rotate(-90deg);
+        }
+
+        .sun-note-highlight {
+            background-color: #fff8e7;
+            border-left: 4px solid #f1c40f;
+            padding: 10px 12px;
+            border-radius: 0 6px 6px 0;
+            font-size: 12.5px;
+            color: #8a6d3b;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        /* Timeline Items */
         .timeline-item, .places-card {
             position: relative;
             padding-left: 25px;
@@ -310,7 +381,7 @@
 
     <div id="sidebar">
         <div class="header">
-            <h1>☀️  Viagem CáBem ☀️ V8</h1>
+            <h1> ☀️  Viagem Cá Bem ☀️ V10</h1>
             <p style="margin:0; font-size: 13px; color: var(--text-muted);">Lucas e Shayene • 4 a 11 de Out. 2026 • HB20 Hatch</p>
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
@@ -324,383 +395,557 @@
         <div class="timeline-container">
             
             <!-- DIA 4 -->
-            <div class="day-section">
-                <div class="day-header"><span>Dia 4/10</span> Domingo: Partida e Descompressão</div>
+            <div class="day-section collapsed">
+                <div class="day-header">
+                    <div class="day-title-row">
+                        <div class="day-header-left">
+                            <span>Dia 4/10</span> Domingo: Partida e Descompressão
+                        </div>
+                        <div class="accordion-icon">▼</div>
+                    </div>
+                    <div class="sun-badge">
+                        <span>🌅 05:22</span>
+                        <span>🌇 17:33</span>
+                    </div>
+                </div>
                 
-                <div class="timeline-item" data-km="684" data-category="logistica" onclick='updateMap(["Rua Bom Sucesso, 722 - Carlos Prates, Belo Horizonte", "Avenida Albert Scharlé, 1153 - Paciência, Sabará", "Governador Valadares, MG", "Rua Professora Deolinda Lage, Itaúnas, Conceição da Barra - ES"])'>
-                    <div class="timeline-icon">🚗</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Pé na Estrada (BH ➔ Sabará ➔ Itaúnas) <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">05:00 • Deslocamento de Carro (~684 km)</span>
-                        <p class="desc">Partida da Rua Bom Sucesso, 722 (BH), passando na Av. Albert Scharlé, 1153 (Sabará) e seguindo viagem para Itaúnas com o HB20 Hatch.</p>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> Saída pontual às 05h00 (Carlos Prates)</li>
-                            <li><input type="checkbox" class="sub-check"> Passada na Av. Albert Scharlé, 1153 (Sabará)</li>
-                            <li><input type="checkbox" class="sub-check"> Pausa em Gov. Valadares para alimentação</li>
-                        </ul>
+                <div class="day-body">
+                    <div class="timeline-item" data-km="684" data-category="logistica" onclick='updateMap(["Rua Bom Sucesso, 722 - Carlos Prates, Belo Horizonte", "Avenida Albert Scharlé, 1153 - Paciência, Sabará", "Governador Valadares, MG", "Rua Professora Deolinda Lage, Itaúnas, Conceição da Barra - ES"])'>
+                        <div class="timeline-icon">🚗</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Pé na Estrada (BH ➔ Sabará ➔ Itaúnas) <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">05:00 • Deslocamento de Carro (~684 km)</span>
+                            <p class="desc">Partida da Rua Bom Sucesso, 722 (BH), passando na Av. Albert Scharlé, 1153 (Sabará) e seguindo viagem para Itaúnas com o HB20 Hatch.</p>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> Saída pontual às 05h00 (Carlos Prates)</li>
+                                <li><input type="checkbox" class="sub-check"> Passada na Av. Albert Scharlé, 1153 (Sabará)</li>
+                                <li><input type="checkbox" class="sub-check"> Pausa em Gov. Valadares para alimentação</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="5" data-category="logistica utilidades" onclick="updateMap('Rua Professora Deolinda Lage, Itaúnas, Conceição da Barra - ES')">
-                    <div class="timeline-icon">🏠</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Check-in e Compras Iniciais <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">16:30 • Chegada</span>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> Check-in na Rua Profa. Deolinda Lage</li>
-                            <li><input type="checkbox" class="sub-check"> Abastecer despensa no <a href="https://www.google.com/maps/search/?api=1&query=Supermercado+Varandao+Itaunas" target="_blank" class="map-link">Supermercado Itaúnas</a></li>
-                        </ul>
+                    <div class="timeline-item" data-km="5" data-category="logistica utilidades" onclick="updateMap('Rua Professora Deolinda Lage, Itaúnas, Conceição da Barra - ES')">
+                        <div class="timeline-icon">🏠</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Check-in e Compras Iniciais <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">16:30 • Chegada</span>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> Check-in na Rua Profa. Deolinda Lage</li>
+                                <li><input type="checkbox" class="sub-check"> Abastecer despensa no <a href="https://www.google.com/maps/search/?api=1&query=Supermercado+Varandao+Itaunas" target="_blank" class="map-link">Supermercado Itaúnas</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Pizzaria Cazuá, Itaúnas')">
-                    <div class="timeline-icon">🍕</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Jantar na Pizzaria Cazuá <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Noite • Gastronomia</span>
-                        <p class="desc">Pizzas artesanais de massa fina no centrinho da vila.</p>
-                        <div class="local-tip">💡 <strong>Dica:</strong> A pizza de carne de sol com catupiry é o carro-chefe!</div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Pizzaria+Cazua+Itaunas" target="_blank" class="map-link">📍 Abrir no Maps</a>
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Pizzaria Cazuá, Itaúnas')">
+                        <div class="timeline-icon">🍕</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Jantar na Pizzaria Cazuá <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Noite • Gastronomia</span>
+                            <p class="desc">Pizzas artesanais de massa fina no centrinho da vila.</p>
+                            <div class="local-tip">💡 <strong>Dica:</strong> A pizza de carne de sol com catupiry é o carro-chefe!</div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Pizzaria+Cazua+Itaunas" target="_blank" class="map-link">📍 Abrir no Maps</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- DIA 5 -->
-            <div class="day-section">
-                <div class="day-header"><span>Dia 5/10</span> Segunda: Trilhas, Museu e Dunas</div>
-                
-                <div class="timeline-item" data-km="4" data-category="natureza" onclick='updateMap(["Parque Estadual de Itaúnas Sede", "Praia de Itaúnas, ES"])'>
-                    <div class="timeline-icon">🥾</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Trilhas de Restinga e Praia <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">07:30 • Natureza (Rota no Mapa)</span>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> Trilha do Alagado</li>
-                            <li><input type="checkbox" class="sub-check"> Trilha dos Pescadores</li>
-                            <li><input type="checkbox" class="sub-check"> Primeiro banho na <a href="https://www.google.com/maps/search/?api=1&query=Praia+de+Itaunas+Espirito+Santo" target="_blank" class="map-link">Praia de Itaúnas</a></li>
-                        </ul>
+            <div class="day-section collapsed">
+                <div class="day-header">
+                    <div class="day-title-row">
+                        <div class="day-header-left">
+                            <span>Dia 5/10</span> Segunda: Trilhas, Museu e Dunas
+                        </div>
+                        <div class="accordion-icon">▼</div>
+                    </div>
+                    <div class="sun-badge">
+                        <span>🌅 05:21</span>
+                        <span>🌇 17:33</span>
                     </div>
                 </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Cizinho Restaurante, Itaúnas')">
-                    <div class="timeline-icon">🍽️</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Almoço Cizinho Restaurante <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Meio-dia • Gastronomia</span>
-                        <p class="desc">Moqueca capixaba tradicional na panela de barro (proteína magra pós-trilha).</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Cizinho+Restaurante+Itaunas" target="_blank" class="map-link">📍 Abrir no Maps</a>
+                <div class="day-body">
+                    <div class="sun-note-highlight">
+                        ☀️ <strong>Nota Prática do Sol:</strong> Para o pôr do sol nas Dunas, estejam no topo entre <strong>16:45 e 17:00</strong> para aproveitar a iluminação dourada perfeita nas areias antes do sol se pôr às 17h33.
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="2" data-category="cultura" onclick="updateMap('Parque Estadual de Itaunas Sede')">
-                    <div class="timeline-icon">🏛️</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Visita ao Museu de Itaúnas <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">14:30 • Cultura e História</span>
-                        <p class="desc">Passada no centro de visitantes / Museu do Parque Estadual para conhecer o acervo arqueológico da vila soterada pelas dunas.</p>
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Sanuati Café, R. Adolpho Pereira Duarte, Itaúnas, Conceição da Barra - ES')">
+                        <div class="timeline-icon">☕</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Café da Manhã no Sanuati Café <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Manhã • Gastronomia</span>
+                            <p class="desc">Primeira parada do dia para o café da manhã na vila.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Sanuati+Cafe+Rua+Adolpho+Pereira+Duarte+Itaunas" target="_blank" class="map-link">📍 R. Adolpho Pereira Duarte</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="timeline-item" data-km="2" data-category="natureza" onclick="updateMap('Dunas de Itaúnas, Espírito Santo')">
-                    <div class="timeline-icon">🌅</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Pôr do Sol nas Dunas <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">16:00 - 17:30 • Natureza</span>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> Subir a crista das Dunas antes das 17h00</li>
-                            <li><input type="checkbox" class="sub-check"> Assistir ao pôr do sol (aprox. 17h30)</li>
-                        </ul>
-                        <div class="local-tip">🕶️ <strong>Dica Local:</strong> Venta muito no topo! Levem óculos escuros para proteger os olhos da areia.</div>
+                    
+                    <div class="timeline-item" data-km="4" data-category="natureza" onclick='updateMap(["Parque Estadual de Itaúnas Sede", "Praia de Itaúnas, ES"])'>
+                        <div class="timeline-icon">🥾</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Trilhas de Restinga e Praia <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">07:30 • Natureza (Rota no Mapa)</span>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> Trilha do Alagado</li>
+                                <li><input type="checkbox" class="sub-check"> Trilha dos Pescadores</li>
+                                <li><input type="checkbox" class="sub-check"> Primeiro banho na <a href="https://www.google.com/maps/search/?api=1&query=Praia+de+Itaunas+Espirito+Santo" target="_blank" class="map-link">Praia de Itaúnas</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Restaurante Dona Pedrolina, Itaúnas')">
-                    <div class="timeline-icon">🥩</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Jantar Dona Pedrolina <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Noite • Gastronomia</span>
-                        <p class="desc">Comida regional caseira e caprichada (destaque para a carne de sol).</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Dona+Pedrolina+Itaunas" target="_blank" class="map-link">📍 Abrir no Maps</a>
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Cizinho Restaurante, Itaúnas')">
+                        <div class="timeline-icon">🍽️</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Almoço Cizinho Restaurante <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Meio-dia • Gastronomia</span>
+                            <p class="desc">Moqueca capixaba tradicional na panela de barro (proteína magra pós-trilha).</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Cizinho+Restaurante+Itaunas" target="_blank" class="map-link">📍 Abrir no Maps</a>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="2" data-category="cultura" onclick="updateMap('Parque Estadual de Itaunas Sede')">
+                        <div class="timeline-icon">🏛️</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Visita ao Museu de Itaúnas <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">14:30 • Cultura e História</span>
+                            <p class="desc">Passada no centro de visitantes / Museu do Parque Estadual para conhecer o acervo arqueológico da vila soterada pelas dunas.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="2" data-category="natureza" onclick="updateMap('Dunas de Itaúnas, Espírito Santo')">
+                        <div class="timeline-icon">🌅</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Pôr do Sol nas Dunas <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">16:00 - 17:30 • Natureza</span>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> Subir a crista das Dunas antes das 17h00</li>
+                                <li><input type="checkbox" class="sub-check"> Assistir ao pôr do sol (aprox. 17h30)</li>
+                            </ul>
+                            <div class="local-tip">🕶️ <strong>Dica Local:</strong> Venta muito no topo! Levem óculos escuros para proteger os olhos da areia.</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Restaurante Dona Pedrolina, Itaúnas')">
+                        <div class="timeline-icon">🥩</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Jantar Dona Pedrolina <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Noite • Gastronomia</span>
+                            <p class="desc">Comida regional caseira e caprichada (destaque para a carne de sol).</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Dona+Pedrolina+Itaunas" target="_blank" class="map-link">📍 Abrir no Maps</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- DIA 6 -->
-            <div class="day-section">
-                <div class="day-header"><span>Dia 6/10</span> Terça: Praias de Conceição, Tartarugas e Fotos</div>
-
-                <div class="timeline-item" data-km="25" data-category="logistica" onclick='updateMap(["Rua Professora Deolinda Lage, Itaúnas", "Conceição da Barra, ES"])'>
-                    <div class="timeline-icon">🚗</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Deslocamento para Conceição <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">07:15 • Deslocamento de Carro (Rota no Mapa)</span>
-                        <p class="desc">Viagem de carro saindo de Itaúnas com o objetivo de chegar às 08h00 em Conceição da Barra.</p>
+            <div class="day-section collapsed">
+                <div class="day-header">
+                    <div class="day-title-row">
+                        <div class="day-header-left">
+                            <span>Dia 6/10</span> Terça: Praias de Conceição, Tartarugas e Fotos
+                        </div>
+                        <div class="accordion-icon">▼</div>
+                    </div>
+                    <div class="sun-badge">
+                        <span>🌅 05:20</span>
+                        <span>🌇 17:33</span>
                     </div>
                 </div>
 
-                <div class="timeline-item" data-km="5" data-category="natureza cultura" onclick='updateMap(["Praia da Guaxindiba, Conceição da Barra", "Praça do Cais, Conceição da Barra", "Farol da Barra, Conceição da Barra", "Mirante da Bugia, Conceição da Barra"])'>
-                    <div class="timeline-icon">📸</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Praia & Postais de Conceição <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Manhã • Turismo (Rota no Mapa)</span>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> Banho de mar na <a href="https://www.google.com/maps/search/?api=1&query=Praia+da+Guaxindiba+Conceicao+da+Barra" target="_blank" class="map-link">Praia da Guaxindiba</a></li>
-                            <li><input type="checkbox" class="sub-check"> Caminhada pela <a href="https://www.google.com/maps/search/?api=1&query=Praca+do+Cais+Conceicao+da+Barra" target="_blank" class="map-link">Praça do Cais</a></li>
-                            <li><input type="checkbox" class="sub-check"> Fotos no <a href="https://www.google.com/maps/search/?api=1&query=Farol+da+Barra+Conceicao+da+Barra" target="_blank" class="map-link">Farol da Barra</a></li>
-                            <li><input type="checkbox" class="sub-check"> Vista panorâmica no <a href="https://www.google.com/maps/search/?api=1&query=Mirante+da+Bugia+Conceicao+da+Barra" target="_blank" class="map-link">Mirante da Bugia</a></li>
-                        </ul>
+                <div class="day-body">
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Quintal da Vila, R. Demerval Leite da Silva, Itaúnas, Conceição da Barra - ES')">
+                        <div class="timeline-icon">☕</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Café da Manhã no Quintal da Vila <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Manhã • Gastronomia</span>
+                            <p class="desc">Café da manhã reforçado antes de sair para Conceição da Barra.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Quintal+da+Vila+Rua+Demerval+Leite+da+Silva+Itaunas" target="_blank" class="map-link">📍 R. Demerval Leite da Silva</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Bar e Restaurante Casarao do Cais Conceicao da Barra')">
-                    <div class="timeline-icon">🍲</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Almoço Casarão do Cais <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Meio-dia • Gastronomia</span>
-                        <p class="desc">Frutos do mar servidos com vista para o rio em Conceição da Barra.</p>
+                    <div class="timeline-item" data-km="25" data-category="logistica" onclick='updateMap(["Rua Professora Deolinda Lage, Itaúnas", "Conceição da Barra, ES"])'>
+                        <div class="timeline-icon">🚗</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Deslocamento para Conceição <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">07:15 • Deslocamento de Carro (Rota no Mapa)</span>
+                            <p class="desc">Viagem de carro saindo de Itaúnas com o objetivo de chegar às 08h00 em Conceição da Barra.</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="35" data-category="natureza cultura logistica" onclick='updateMap(["Bar e Restaurante Casarao do Cais Conceicao da Barra", "Projeto Tamar Guriri Norte"])'>
-                    <div class="timeline-icon">🐢</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Deslocamento & Centro TAMAR <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Após Almoço • Conservação Marinha (Rota no Mapa)</span>
-                        <p class="desc">Deslocamento de carro até Guriri Norte para visita educativa aos tanques de conservação marinha.</p>
-                        <div class="local-tip">🛍️ <strong>Dica:</strong> A loja oficial vende produtos cuja renda ajuda o projeto.</div>
+                    <div class="timeline-item" data-km="5" data-category="natureza cultura" onclick='updateMap(["Praia da Guaxindiba, Conceição da Barra", "Praça do Cais, Conceição da Barra", "Farol da Barra, Conceição da Barra", "Mirante da Bugia, Conceição da Barra"])'>
+                        <div class="timeline-icon">📸</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Praia & Postais de Conceição <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Manhã • Turismo (Rota no Mapa)</span>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> Banho de mar na <a href="https://www.google.com/maps/search/?api=1&query=Praia+da+Guaxindiba+Conceicao+da+Barra" target="_blank" class="map-link">Praia da Guaxindiba</a></li>
+                                <li><input type="checkbox" class="sub-check"> Caminhada pela <a href="https://www.google.com/maps/search/?api=1&query=Praca+do+Cais+Conceicao+da+Barra" target="_blank" class="map-link">Praça do Cais</a></li>
+                                <li><input type="checkbox" class="sub-check"> Fotos no <a href="https://www.google.com/maps/search/?api=1&query=Farol+da+Barra+Conceicao+da+Barra" target="_blank" class="map-link">Farol da Barra</a></li>
+                                <li><input type="checkbox" class="sub-check"> Vista panorâmica no <a href="https://www.google.com/maps/search/?api=1&query=Mirante+da+Bugia+Conceicao+da+Barra" target="_blank" class="map-link">Mirante da Bugia</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="35" data-category="gastronomia" onclick="updateMap('Casarao da Vila Itaunas')">
-                    <div class="timeline-icon">🍽️</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Jantar (2 Opções) <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Noite • Gastronomia (Volta pra Itaúnas inclusa)</span>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> <strong>Opção 1:</strong> Ficar em Conceição na <a href="https://www.google.com/maps/search/?api=1&query=Bar+Parada+Obrigatoria+Centro+Conceicao+da+Barra+ES" target="_blank" class="map-link">Parada Obrigatória</a></li>
-                            <li><input type="checkbox" class="sub-check"> <strong>Opção 2:</strong> Voltar a Itaúnas para o <a href="https://www.google.com/maps/search/?api=1&query=Casarao+da+Vila+Itaunas+Espirito+Santo" target="_blank" class="map-link">Casarão da Vila</a></li>
-                        </ul>
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Bar e Restaurante Casarao do Cais Conceicao da Barra')">
+                        <div class="timeline-icon">🍲</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Almoço Casarão do Cais <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Meio-dia • Gastronomia</span>
+                            <p class="desc">Frutos do mar servidos com vista para o rio em Conceição da Barra.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="35" data-category="natureza cultura logistica" onclick='updateMap(["Bar e Restaurante Casarao do Cais Conceicao da Barra", "Projeto Tamar Guriri Norte"])'>
+                        <div class="timeline-icon">🐢</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Deslocamento & Centro TAMAR <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Após Almoço • Conservação Marinha (Rota no Mapa)</span>
+                            <p class="desc">Deslocamento de carro até Guriri Norte para visita educativa aos tanques de conservação marinha.</p>
+                            <div class="local-tip">🛍️ <strong>Dica:</strong> A loja oficial vende produtos cuja renda ajuda o projeto.</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="35" data-category="gastronomia" onclick="updateMap('Estação Beer Drinks, Conceição da Barra, ES')">
+                        <div class="timeline-icon">🍽️</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Jantar (2 Opções) <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Noite • Gastronomia (Volta pra Itaúnas inclusa)</span>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> <strong>Opção 1:</strong> Ficar em Conceição no <a href="https://www.google.com/maps/search/?api=1&query=Estacao+Beer+Drinks+Conceicao+da+Barra+ES" target="_blank" class="map-link">Estação Beer Drinks</a></li>
+                                <li><input type="checkbox" class="sub-check"> <strong>Opção 2:</strong> Voltar a Itaúnas para o <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Dona+Tereza+Itaunas" target="_blank" class="map-link">Restaurante Dona Tereza</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
              <!-- DIA 7 -->
-             <div class="day-section">
-                <div class="day-header"><span>Dia 7/10</span> Quarta: Rota Bahia e Bike no Pôr do Sol</div>
-
-                <div class="timeline-item" data-km="70" data-category="natureza" onclick='updateMap(["Rua Professora Deolinda Lage, Itaúnas", "Praia de Costa Dourada, Mucuri, BA"])'>
-                    <div class="timeline-icon">🚗</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Viagem de Carro: Costa Dourada <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Manhã • Litoral Baiano (Rota no Mapa)</span>
-                        <p class="desc">Ida de carro até as falésias avermelhadas de Costa Dourada. Manhã livre para curtir a praia.</p>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> Deslocamento Itaúnas ➔ Costa Dourada</li>
-                            <li><input type="checkbox" class="sub-check"> Banho de mar e fotos nas falésias</li>
-                        </ul>
+             <div class="day-section collapsed">
+                <div class="day-header">
+                    <div class="day-title-row">
+                        <div class="day-header-left">
+                            <span>Dia 7/10</span> Quarta: Rota Bahia e Bike no Pôr do Sol
+                        </div>
+                        <div class="accordion-icon">▼</div>
+                    </div>
+                    <div class="sun-badge">
+                        <span>🌅 05:20</span>
+                        <span>🌇 17:34</span>
                     </div>
                 </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Barraca do Claudio Costa Dourada Bahia')">
-                    <div class="timeline-icon">🐟</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Almoço na Costa Dourada <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Meio-dia • Gastronomia</span>
-                        <p class="desc">A <a href="https://www.google.com/maps/search/?api=1&query=Barraca+do+Claudio+Costa+Dourada+Bahia" target="_blank" class="map-link">Barraca do Cláudio</a> tem ótima infraestrutura na areia baiana.</p>
+                <div class="day-body">
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Padoka do Klebinho, R. Demerval Leite da Silva, 276, Itaúnas, Conceição da Barra - ES')">
+                        <div class="timeline-icon">☕</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Café da Manhã na Padoka do Klebinho <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Manhã • Gastronomia</span>
+                            <p class="desc">Café da manhã reforçado para começar o dia.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Padoka+do+Klebinho+Rua+Demerval+Leite+da+Silva+276+Itaunas" target="_blank" class="map-link">📍 R. Demerval Leite da Silva, 276</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="0" data-category="natureza" onclick='updateMap(["Rua Professora Deolinda Lage, Itaúnas", "Praia do Riacho Doce, Conceição da Barra"])'>
-                    <div class="timeline-icon">🚴</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Opção: Pedal até Riacho Doce <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Tarde • Aventura e Pôr do Sol</span>
-                        <p class="desc">Passeio de bicicleta saindo de Itaúnas até a divisa do estado no Riacho Doce para o pôr do sol.</p>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> Aluguel das bikes (se necessário)</li>
-                            <li><input type="checkbox" class="sub-check"> Pedalada até a Praia do <a href="https://www.google.com/maps/search/?api=1&query=Praia+do+Riacho+Doce+Bahia+Espirito+Santo" target="_blank" class="map-link">Riacho Doce</a></li>
-                        </ul>
+                    <div class="timeline-item" data-km="70" data-category="natureza" onclick='updateMap(["Rua Professora Deolinda Lage, Itaúnas", "Praia de Costa Dourada, Mucuri, BA"])'>
+                        <div class="timeline-icon">🚗</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Viagem de Carro: Costa Dourada <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Manhã • Litoral Baiano (Rota no Mapa)</span>
+                            <p class="desc">Ida de carro até as falésias avermelhadas de Costa Dourada. Manhã livre para curtir a praia.</p>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> Deslocamento Itaúnas ➔ Costa Dourada</li>
+                                <li><input type="checkbox" class="sub-check"> Banho de mar e fotos nas falésias</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Xique-Xique Restaurante Itaunas')">
-                    <div class="timeline-icon">🍲</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Jantar Típico (3 Opções) <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Noite • Gastronomia</span>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> <strong>Opção 1:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Xique-Xique+Restaurante+Itaunas" target="_blank" class="map-link">Xique-Xique Restaurante</a></li>
-                            <li><input type="checkbox" class="sub-check"> <strong>Opção 2:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Dona+Tereza+Itaunas" target="_blank" class="map-link">Restaurante Dona Tereza</a></li>
-                            <li><input type="checkbox" class="sub-check"> <strong>Opção 3 (Rápida):</strong> <a href="https://www.google.com/maps/search/?api=1&query=Luz+da+Vila+Itaunas" target="_blank" class="map-link">Luz da Vila</a> (Hambúrguer)</li>
-                        </ul>
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Barraca do Claudio Costa Dourada Bahia')">
+                        <div class="timeline-icon">🐟</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Almoço na Costa Dourada <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Meio-dia • Gastronomia</span>
+                            <p class="desc">A <a href="https://www.google.com/maps/search/?api=1&query=Barraca+do+Claudio+Costa+Dourada+Bahia" target="_blank" class="map-link">Barraca do Cláudio</a> tem ótima infraestrutura na areia baiana.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="0" data-category="natureza" onclick='updateMap(["Rua Professora Deolinda Lage, Itaúnas", "Praia do Riacho Doce, Conceição da Barra"])'>
+                        <div class="timeline-icon">🚴</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Opção: Pedal até Riacho Doce <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Tarde • Aventura e Pôr do Sol</span>
+                            <p class="desc">Passeio de bicicleta saindo de Itaúnas até a divisa do estado no Riacho Doce para o pôr do sol.</p>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> Aluguel das bikes (se necessário)</li>
+                                <li><input type="checkbox" class="sub-check"> Pedalada até a Praia do <a href="https://www.google.com/maps/search/?api=1&query=Praia+do+Riacho+Doce+Bahia+Espirito+Santo" target="_blank" class="map-link">Riacho Doce</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Xique-Xique Restaurante Itaunas')">
+                        <div class="timeline-icon">🍲</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Jantar Típico (3 Opções) <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Noite • Gastronomia</span>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> <strong>Opção 1:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Xique-Xique+Restaurante+Itaunas" target="_blank" class="map-link">Xique-Xique Restaurante</a></li>
+                                <li><input type="checkbox" class="sub-check"> <strong>Opção 2:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Dona+Tereza+Itaunas" target="_blank" class="map-link">Restaurante Dona Tereza</a></li>
+                                <li><input type="checkbox" class="sub-check"> <strong>Opção 3 (Rápida):</strong> <a href="https://www.google.com/maps/search/?api=1&query=Luz+da+Vila+Itaunas" target="_blank" class="map-link">Luz da Vila</a> (Hambúrguer)</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- DIA 8 -->
-            <div class="day-section">
-                <div class="day-header"><span>Dia 8/10</span> Quinta: Espelho D'água e História</div>
-
-                <div class="timeline-item" data-km="5" data-category="natureza" onclick="updateMap('Rio Itaúnas, Espírito Santo')">
-                    <div class="timeline-icon">🛶</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Voadeira no Nascer do Sol <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">05:00 - 07:00 • Natureza Extraordinária</span>
-                        <p class="desc">Passeio de voadeira/canoagem no <a href="https://www.google.com/maps/search/?api=1&query=Rio+Itaunas+Conceicao+da+Barra" target="_blank" class="map-link">Rio Itaúnas</a>. Momento exato em que o vento para e a água vira um espelho da vegetação.</p>
+            <div class="day-section collapsed">
+                <div class="day-header">
+                    <div class="day-title-row">
+                        <div class="day-header-left">
+                            <span>Dia 8/10</span> Quinta: Espelho D'água e História
+                        </div>
+                        <div class="accordion-icon">▼</div>
+                    </div>
+                    <div class="sun-badge">
+                        <span>🌅 05:19</span>
+                        <span>🌇 17:34</span>
                     </div>
                 </div>
 
-                <div class="timeline-item" data-km="2" data-category="natureza cultura" onclick='updateMap(["Rua Professora Deolinda Lage, Itaúnas", "Trilha do Tamandaré Itaúnas"])'>
-                    <div class="timeline-icon">🥾</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Ruínas Antigas <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">09:30 • Natureza/História (Rota no Mapa)</span>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> Fazer a <a href="https://www.google.com/maps/search/?api=1&query=Trilha+do+Tamandare+Itaunas" target="_blank" class="map-link">Trilha do Tamandaré</a></li>
-                            <li><input type="checkbox" class="sub-check"> Visitar as ruínas da Casa do Tamandaré (antiga vila)</li>
-                        </ul>
+                <div class="day-body">
+                    <div class="sun-note-highlight">
+                        🌅 <strong>Nota Prática do Sol:</strong> Para o passeio de Voadeira no Rio Itaúnas, estejam no ponto de embarque às <strong>05:00</strong> para navegar na alvorada e contemplar o espelho d'água perfeito exatamente no nascer do sol às 05h19.
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Restaurante O Sabor da Duna Itaunas')">
-                    <div class="timeline-icon">🍽️</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Almoço <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Meio-dia • Gastronomia</span>
-                        <p class="desc">Escolha entre <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+O+Sabor+da+Duna+Itaunas" target="_blank" class="map-link">O Sabor da Duna</a> ou <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Sapucaia+Itaunas" target="_blank" class="map-link">Restaurante Sapucaia</a>.</p>
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Padaria Delícias Caseiras de Jeová, R. Maria Ortiz Barcelos, Itaúnas, Conceição da Barra - ES')">
+                        <div class="timeline-icon">☕</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Café da Manhã nas Delícias Caseiras de Jeová <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Manhã • Gastronomia</span>
+                            <p class="desc">Primeira parada do dia para o café da manhã típico na vila.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Padaria+Delicias+Caseiras+de+Jeova+Rua+Maria+Ortiz+Barcelos+Itaunas" target="_blank" class="map-link">📍 R. Maria Ortiz Barcelos, 387-275</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="3" data-category="gastronomia cultura" onclick="updateMap('Resenha Tap Room Itaúnas')">
-                    <div class="timeline-icon">🍺</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Resenha Tap Room <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">15:30 • Parada Estratégica</span>
-                        <p class="desc">Visita para relaxar e provar chopps artesanais na <a href="https://www.google.com/maps/search/?api=1&query=Resenha+Tap+Room+Itaunas" target="_blank" class="map-link">Resenha Tap Room</a> antes de voltar à base.</p>
+                    <div class="timeline-item" data-km="5" data-category="natureza" onclick="updateMap('Rio Itaúnas, Espírito Santo')">
+                        <div class="timeline-icon">🛶</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Voadeira no Nascer do Sol <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">05:00 - 07:00 • Natureza Extraordinária</span>
+                            <p class="desc">Passeio de voadeira/canoagem no <a href="https://www.google.com/maps/search/?api=1&query=Rio+Itaunas+Conceicao+da+Barra" target="_blank" class="map-link">Rio Itaúnas</a>. Momento exato em que o vento para e a água vira um espelho da vegetação.</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia cultura" onclick="updateMap('Bar Forró Itaúnas')">
-                    <div class="timeline-icon">🪗</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Jantar & Forró <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Noite • Cultura/Gastronomia</span>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> Jantar no <a href="https://www.google.com/maps/search/?api=1&query=Bar+e+Restaurante+do+Pedrinho+Itaunas" target="_blank" class="map-link">Bar e Restaurante do Pedrinho</a></li>
-                            <li><input type="checkbox" class="sub-check"> Sentir a vibração no legítimo <a href="https://www.google.com/maps/search/?api=1&query=Forro+de+Itaunas+Bar+Forro+ES" target="_blank" class="map-link">Bar Forró</a></li>
-                        </ul>
+                    <div class="timeline-item" data-km="2" data-category="natureza cultura" onclick='updateMap(["Rua Professora Deolinda Lage, Itaúnas", "Trilha do Tamandaré Itaúnas"])'>
+                        <div class="timeline-icon">🥾</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Ruínas Antigas <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">09:30 • Natureza/História (Rota no Mapa)</span>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> Fazer a <a href="https://www.google.com/maps/search/?api=1&query=Trilha+do+Tamandare+Itaunas" target="_blank" class="map-link">Trilha do Tamandaré</a></li>
+                                <li><input type="checkbox" class="sub-check"> Visitar as ruínas da Casa do Tamandaré (antiga vila)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Praia de Itaúnas, Espírito Santo')">
+                        <div class="timeline-icon">🍽️</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Almoço na Praia <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Meio-dia • Gastronomia</span>
+                            <p class="desc">Almoço nas barracas de praia de Itaúnas aproveitando o dia à beira-mar.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Barracas+de+Praia+Itaunas+ES" target="_blank" class="map-link">📍 Barracas da Praia de Itaúnas</a>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="3" data-category="gastronomia cultura" onclick="updateMap('Resenha Tap Room Itaúnas')">
+                        <div class="timeline-icon">🍺</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Resenha Tap Room <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">15:30 • Parada Estratégica</span>
+                            <p class="desc">Visita para relaxar e provar chopps artesanais na <a href="https://www.google.com/maps/search/?api=1&query=Resenha+Tap+Room+Itaunas" target="_blank" class="map-link">Resenha Tap Room</a> antes de voltar à base.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="0" data-category="gastronomia cultura" onclick="updateMap('Forró da Padaria, Itaúnas, Conceição da Barra - ES')">
+                        <div class="timeline-icon">🪗</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Jantar & Forró da Padaria <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Noite • Cultura/Gastronomia</span>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> Jantar na vila (ex: <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Dona+Pedrolina+Itaunas" target="_blank" class="map-link">Dona Pedrolina</a> / <a href="https://www.google.com/maps/search/?api=1&query=Cizinho+Restaurante+Itaunas" target="_blank" class="map-link">Cizinho</a>)</li>
+                                <li><input type="checkbox" class="sub-check"> Sentir a vibração e curtir o <a href="https://www.google.com/maps/search/?api=1&query=Forro+da+Padaria+Itaunas" target="_blank" class="map-link">Forró da Padaria</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- DIA 9 -->
-            <div class="day-section">
-                <div class="day-header"><span>Dia 9/10</span> Sexta: Pedalada Matinal e Descanso</div>
-
-                <div class="timeline-item" data-km="0" data-category="natureza" onclick='updateMap(["Casinha de Aventuras Itaunas", "Praia do Sossego, Conceição da Barra - ES"])'>
-                    <div class="timeline-icon">🚴</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Mountain Bike Matinal <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">07:00 • Natureza (Rota no Mapa)</span>
-                        <p class="desc">Retirar bikes na <a href="https://www.google.com/maps/search/?api=1&query=Casinha+de+Aventuras+Itaunas+Turismo" target="_blank" class="map-link">Casinha de Aventuras</a> bem cedo para rodar até praias distantes e desertas na maré baixa sem sol forte.</p>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> Trilha de bike rumo ao norte até a <a href="https://www.google.com/maps/search/?api=1&query=Praia+do+Sossego+Itaunas" target="_blank" class="map-link">Praia do Sossego</a></li>
-                        </ul>
+            <div class="day-section collapsed">
+                <div class="day-header">
+                    <div class="day-title-row">
+                        <div class="day-header-left">
+                            <span>Dia 9/10</span> Sexta: Pedalada Matinal e Descanso
+                        </div>
+                        <div class="accordion-icon">▼</div>
+                    </div>
+                    <div class="sun-badge">
+                        <span>🌅 05:18</span>
+                        <span>🌇 17:34</span>
                     </div>
                 </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Restaurante Ceu de Eucalipto Itaunas')">
-                    <div class="timeline-icon">🍽️</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Almoço (2 Opções) <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Meio-dia • Gastronomia</span>
-                        <p class="desc"><a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Ceu+e+Mar+Itaunas+Espirito+Santo" target="_blank" class="map-link">Céu de Eucalipto</a> ou <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Canto+da+Duna+Itaunas" target="_blank" class="map-link">Canto da Duna</a>.</p>
+                <div class="day-body">
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Padoka do Klebinho, R. Demerval Leite da Silva, 276, Itaúnas, Conceição da Barra - ES')">
+                        <div class="timeline-icon">☕</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Café da Manhã na Padoka do Klebinho <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Manhã • Gastronomia</span>
+                            <p class="desc">Café da manhã reforçado antes do passeio de bike.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Padoka+do+Klebinho+Rua+Demerval+Leite+da+Silva+276+Itaunas" target="_blank" class="map-link">📍 R. Demerval Leite da Silva, 276</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Vila Mágica Sorveteria e Cafeteria Itaúnas')">
-                    <div class="timeline-icon">🍦</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Vila Mágica Sorveteria <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">15:00 • Parada Rápida</span>
-                        <p class="desc">Passada rápida à tarde para tomar um sorvete na <a href="https://www.google.com/maps/search/?api=1&query=Vila+Magica+Sorveteria+Itaunas" target="_blank" class="map-link">Vila Mágica</a>.</p>
+                    <div class="timeline-item" data-km="0" data-category="natureza" onclick='updateMap(["Casinha de Aventuras Itaunas", "Praia do Sossego, Conceição da Barra - ES"])'>
+                        <div class="timeline-icon">🚴</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Mountain Bike Matinal <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">07:00 • Natureza (Rota no Mapa)</span>
+                            <p class="desc">Retirar bikes na <a href="https://www.google.com/maps/search/?api=1&query=Casinha+de+Aventuras+Itaunas+Turismo" target="_blank" class="map-link">Casinha de Aventuras</a> bem cedo para rodar até praias distantes e desertas na maré baixa sem sol forte.</p>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> Trilha de bike rumo ao norte até a <a href="https://www.google.com/maps/search/?api=1&query=Praia+do+Sossego+Itaunas" target="_blank" class="map-link">Praia do Sossego</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="0" data-category="logistica" onclick="updateMap('Vila de Itaúnas, ES')">
-                    <div class="timeline-icon">💤</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Recarga de Baterias <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Tarde • Descanso</span>
-                        <p class="desc">Período livre na hospedagem. Tempo para ler, dormir na rede e relaxar da semana intensa.</p>
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Restaurante Céu e Mar, Rod. Prof. Bento Daher, 584, Conceição da Barra - ES')">
+                        <div class="timeline-icon">🍽️</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Almoço no Restaurante Céu & Mar <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Meio-dia • Gastronomia</span>
+                            <p class="desc">Almoço no Restaurante Céu & Mar (Rod. Prof. Bento Daher, 584).</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Ceu+e+Mar+Rod+Prof+Bento+Daher+584+Conceicao+da+Barra" target="_blank" class="map-link">📍 Rod. Prof. Bento Daher, 584</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Gastrobar São Bastião Itaúnas')">
-                    <div class="timeline-icon">🍔</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Jantar <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Noite • Gastronomia</span>
-                        <p class="desc">Sair da rotina de peixe e provar o <a href="https://www.google.com/maps/search/?api=1&query=Gastrobar+Sao+Bastiao+Itaunas" target="_blank" class="map-link">Gastrobar São Bastião</a> (Hambúrgueres e drinks).</p>
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Vila Mágica Sorveteria e Cafeteria Itaúnas')">
+                        <div class="timeline-icon">🍦</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Vila Mágica Sorveteria <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">15:00 • Parada Rápida</span>
+                            <p class="desc">Passada rápida à tarde para tomar um sorvete na <a href="https://www.google.com/maps/search/?api=1&query=Vila+Magica+Sorveteria+Itaunas" target="_blank" class="map-link">Vila Mágica</a>.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="0" data-category="logistica" onclick="updateMap('Vila de Itaúnas, ES')">
+                        <div class="timeline-icon">💤</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Recarga de Baterias <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Tarde • Descanso</span>
+                            <p class="desc">Período livre na hospedagem. Tempo para ler, dormir na rede e relaxar da semana intensa.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Gastrobar São Bastião Itaúnas')">
+                        <div class="timeline-icon">🍔</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Jantar <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Noite • Gastronomia</span>
+                            <p class="desc">Sair da rotina de peixe e provar o <a href="https://www.google.com/maps/search/?api=1&query=Gastrobar+Sao+Bastiao+Itaunas" target="_blank" class="map-link">Gastrobar São Bastião</a> (Hambúrgueres e drinks).</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- DIA 10 -->
-            <div class="day-section">
-                <div class="day-header"><span>Dia 10/10</span> Sábado: Despedida da Vila</div>
-
-                <div class="timeline-item" data-km="4" data-category="natureza" onclick="updateMap('Praia de Itaúnas, ES')">
-                    <div class="timeline-icon">🏖️</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Último Mergulho <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Manhã • Natureza</span>
-                        <p class="desc">Último banho de mar na Praia de Itaúnas.</p>
+            <div class="day-section collapsed">
+                <div class="day-header">
+                    <div class="day-title-row">
+                        <div class="day-header-left">
+                            <span>Dia 10/10</span> Sábado: Despedida da Vila
+                        </div>
+                        <div class="accordion-icon">▼</div>
+                    </div>
+                    <div class="sun-badge">
+                        <span>🌅 05:18</span>
+                        <span>🌇 17:34</span>
                     </div>
                 </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Cizinho Restaurante Itaunas')">
-                    <div class="timeline-icon">🍽️</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Almoço de Fechamento <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Meio-dia • Gastronomia</span>
-                        <p class="desc">Retorno ao <a href="https://www.google.com/maps/search/?api=1&query=Cizinho+Restaurante+Itaunas" target="_blank" class="map-link">Cizinho Restaurante</a> (ou o seu favorito da semana).</p>
+                <div class="day-body">
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Padaria Delícias Caseiras de Jeová, R. Maria Ortiz Barcelos, Itaúnas, Conceição da Barra - ES')">
+                        <div class="timeline-icon">☕</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Café da Manhã nas Delícias Caseiras de Jeová <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Manhã • Gastronomia</span>
+                            <p class="desc">Café da manhã de despedida na vila.</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Padaria+Delicias+Caseiras+de+Jeova+Rua+Maria+Ortiz+Barcelos+Itaunas" target="_blank" class="map-link">📍 R. Maria Ortiz Barcelos, 387-275</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="2" data-category="cultura utilidades" onclick='updateMap(["Igreja de Sao Sebastiao Itaunas", "Praça de Itaúnas"])'>
-                    <div class="timeline-icon">🛍️</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Lembranças e Doces <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Tarde • Cultura (Rota no Mapa)</span>
-                        <p class="desc">Bater perna pela Praça da Igreja, comprar lembranças de artesanato local e doces capixabas para levar.</p>
+                    <div class="timeline-item" data-km="4" data-category="natureza" onclick="updateMap('Praia de Itaúnas, ES')">
+                        <div class="timeline-icon">🏖️</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Último Mergulho <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Manhã • Natureza</span>
+                            <p class="desc">Último banho de mar na Praia de Itaúnas.</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Pizzaria Cazuá Itaúnas')">
-                    <div class="timeline-icon">🍕</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Jantar de Despedida <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Noite • Gastronomia</span>
-                        <p class="desc">Encerramento descontraído na <a href="https://www.google.com/maps/search/?api=1&query=Pizzaria+Cazua+Itaunas" target="_blank" class="map-link">Pizzaria Cazuá</a>.</p>
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Cizinho Restaurante Itaunas')">
+                        <div class="timeline-icon">🍽️</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Almoço de Fechamento <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Meio-dia • Gastronomia</span>
+                            <p class="desc">Retorno ao <a href="https://www.google.com/maps/search/?api=1&query=Cizinho+Restaurante+Itaunas" target="_blank" class="map-link">Cizinho Restaurante</a> (ou o seu favorito da semana).</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="2" data-category="cultura utilidades" onclick='updateMap(["Igreja de Sao Sebastiao Itaunas", "Praça de Itaúnas"])'>
+                        <div class="timeline-icon">🛍️</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Lembranças e Doces <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Tarde • Cultura (Rota no Mapa)</span>
+                            <p class="desc">Bater perna pela Praça da Igreja, comprar lembranças de artesanato local e doces capixabas para levar.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-km="0" data-category="gastronomia" onclick="updateMap('Pizzaria Cazuá Itaúnas')">
+                        <div class="timeline-icon">🍕</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Jantar de Despedida <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Noite • Gastronomia</span>
+                            <p class="desc">Encerramento descontraído na <a href="https://www.google.com/maps/search/?api=1&query=Pizzaria+Cazua+Itaunas" target="_blank" class="map-link">Pizzaria Cazuá</a>.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- DIA 11 -->
-            <div class="day-section">
-                <div class="day-header"><span>Dia 11/10</span> Domingo: Retorno</div>
+            <div class="day-section collapsed">
+                <div class="day-header">
+                    <div class="day-title-row">
+                        <div class="day-header-left">
+                            <span>Dia 11/10</span> Domingo: Retorno
+                        </div>
+                        <div class="accordion-icon">▼</div>
+                    </div>
+                    <div class="sun-badge">
+                        <span>🌅 05:17</span>
+                        <span>🌇 17:35</span>
+                    </div>
+                </div>
 
-                <div class="timeline-item" data-km="660" data-category="logistica" onclick='updateMap(["Rua Professora Deolinda Lage, Itaúnas", "Rua Bom Sucesso, 722 - Carlos Prates, Belo Horizonte"])'>
-                    <div class="timeline-icon">🚗</div>
-                    <div class="timeline-content">
-                        <h4 class="title">Viagem de Volta <input type="checkbox" class="main-check"></h4>
-                        <span class="time-badge">Deslocamento (~660 km - Rota no Mapa)</span>
-                        <ul class="subtasks">
-                            <li><input type="checkbox" class="sub-check"> 05:00: Check-out e pé na estrada</li>
-                            <li><input type="checkbox" class="sub-check"> Viagem cuidadosa de volta</li>
-                            <li><input type="checkbox" class="sub-check"> 17:00: Chegada à <a href="https://www.google.com/maps/search/?api=1&query=Rua+Bom+Sucesso,+722+-+Carlos+Prates,+Belo+Horizonte" target="_blank" class="map-link">Rua Bom Sucesso, 722, BH</a></li>
-                        </ul>
+                <div class="day-body">
+                    <div class="timeline-item" data-km="684" data-category="logistica" onclick='updateMap(["Rua Professora Deolinda Lage, Itaúnas", "Avenida Albert Scharlé, 1153 - Paciência, Sabará", "Rua Bom Sucesso, 722 - Carlos Prates, Belo Horizonte"])'>
+                        <div class="timeline-icon">🚗</div>
+                        <div class="timeline-content">
+                            <h4 class="title">Viagem de Volta <input type="checkbox" class="main-check"></h4>
+                            <span class="time-badge">Deslocamento (~684 km - Rota no Mapa)</span>
+                            <ul class="subtasks">
+                                <li><input type="checkbox" class="sub-check"> <strong>05:00</strong>: Check-out e pé na estrada</li>
+                                <li><input type="checkbox" class="sub-check"> Parada na Av. Albert Scharlé, 1153 (Paciência - Sabará)</li>
+                                <li><input type="checkbox" class="sub-check"> Chegada à <a href="https://www.google.com/maps/search/?api=1&query=Rua+Bom+Sucesso,+722+-+Carlos+Prates,+Belo+Horizonte" target="_blank" class="map-link">Rua Bom Sucesso, 722, BH</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -713,12 +958,15 @@
                 <div class="places-content">
                     <h4>Café da Manhã & Cafeterias</h4>
                     <ul>
-                        <li><a href="https://www.google.com/maps/search/?api=1&query=Luz+da+Vila+Itaunas" target="_blank" onclick="event.stopPropagation()">Luz da Vila (Itaúnas)</a></li>
-                        <li><a href="https://www.google.com/maps/search/?api=1&query=Cafeteria+da+Vila+Itaunas" target="_blank" onclick="event.stopPropagation()">Cafeteria da Vila (Itaúnas)</a></li>
-                        <li><a href="https://www.google.com/maps/search/?api=1&query=Padaria+Itaunas+Espirito+Santo" target="_blank" onclick="event.stopPropagation()">Padaria e Lanchonete Itaúnas</a></li>
-                        <li><a href="https://www.google.com/maps/search/?api=1&query=Pousada+dos+Corais+Itaunas" target="_blank" onclick="event.stopPropagation()">Pousada dos Corais (Itaúnas)</a> - Buffet colonial aberto a visitantes.</li>
-                        <li><a href="https://www.google.com/maps/search/?api=1&query=Padaria+Santo+Antonio+Conceicao+da+Barra" target="_blank" onclick="event.stopPropagation()">Padaria Santo Antônio (C. da Barra)</a></li>
-                        <li><a href="https://www.google.com/maps/search/?api=1&query=Cafezinho+da+Praca+Conceicao+da+Barra" target="_blank" onclick="event.stopPropagation()">Cafezinho da Praça (C. da Barra)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Sanuati+Cafe+Rua+Adolpho+Pereira+Duarte+Itaunas" target="_blank" onclick="event.stopPropagation()">Sanuati Café (Itaúnas)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Quintal+da+Vila+Rua+Demerval+Leite+da+Silva+Itaunas" target="_blank" onclick="event.stopPropagation()">Quintal da Vila (Itaúnas)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Padoka+do+Klebinho+Rua+Demerval+Leite+da+Silva+276+Itaunas" target="_blank" onclick="event.stopPropagation()">Padoka do Klebinho (Itaúnas)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Padaria+Delicias+Caseiras+de+Jeova+Rua+Maria+Ortiz+Barcelos+Itaunas" target="_blank" onclick="event.stopPropagation()">Delícias Caseiras de Jeová (Itaúnas)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Luz+da+Vila+Itaunas+ES" target="_blank" onclick="event.stopPropagation()">Luz da Vila (Itaúnas)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Cafeteria+da+Vila+Itaunas+ES" target="_blank" onclick="event.stopPropagation()">Cafeteria da Vila (Itaúnas)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Pousada+dos+Corais+Itaunas+ES" target="_blank" onclick="event.stopPropagation()">Pousada dos Corais (Itaúnas)</a> - Buffet colonial.</li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Padaria+Santo+Antonio+Conceicao+da+Barra+ES" target="_blank" onclick="event.stopPropagation()">Padaria Santo Antônio (C. da Barra)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Cafezinho+da+Praca+Conceicao+da+Barra+ES" target="_blank" onclick="event.stopPropagation()">Cafezinho da Praça (C. da Barra)</a></li>
                     </ul>
                 </div>
             </div>
@@ -729,11 +977,11 @@
                     <h4>Mercados e Abastecimento</h4>
                     <ul>
                         <li><a href="https://www.google.com/maps/search/?api=1&query=Supermercado+Varandao+Itaunas" target="_blank" onclick="event.stopPropagation()">Supermercado Itaúnas (Varandão)</a></li>
-                        <li><a href="https://www.google.com/maps/search/?api=1&query=Mercado+Itaunas+Espirito+Santo" target="_blank" onclick="event.stopPropagation()">Mercado do Teté (Itaúnas)</a></li>
-                        <li><a href="https://www.google.com/maps/search/?api=1&query=Minimercado+Dunas+Itaunas" target="_blank" onclick="event.stopPropagation()">Minimercado Dunas (Itaúnas)</a></li>
-                        <li><a href="https://www.google.com/maps/search/?api=1&query=Casagrande+Supermercados+Conceicao+da+Barra" target="_blank" onclick="event.stopPropagation()">Casagrande (C. da Barra)</a></li>
-                        <li><a href="https://www.google.com/maps/search/?api=1&query=Supermercado+Santo+Antonio+Conceicao+da+Barra" target="_blank" onclick="event.stopPropagation()">Supermercado Santo Antônio (C. da Barra)</a></li>
-                        <li><a href="https://www.google.com/maps/search/?api=1&query=Mercado+Municipal+Conceicao+da+Barra" target="_blank" onclick="event.stopPropagation()">Mercado Municipal (C. da Barra)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Mercado+do+Tete+Itaunas+Conceicao+da+Barra" target="_blank" onclick="event.stopPropagation()">Mercado do Teté (Itaúnas)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Minimercado+Dunas+Itaunas+Conceicao+da+Barra" target="_blank" onclick="event.stopPropagation()">Minimercado Dunas (Itaúnas)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Casagrande+Supermercados+Conceicao+da+Barra+ES" target="_blank" onclick="event.stopPropagation()">Casagrande Supermercados (C. da Barra)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Supermercado+Santo+Antonio+Centro+Conceicao+da+Barra+ES" target="_blank" onclick="event.stopPropagation()">Supermercado Santo Antônio (C. da Barra)</a></li>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Mercado+Municipal+Conceicao+da+Barra+ES" target="_blank" onclick="event.stopPropagation()">Mercado Municipal (C. da Barra)</a></li>
                     </ul>
                 </div>
             </div>
@@ -763,7 +1011,7 @@
     <!-- Rodapé Dinâmico de Quilometragem -->
     <div id="km-footer">
         <div class="km-info">
-            Dist. Percorrida: <span id="km-counter">0</span> / 1.579 km
+            Dist. Percorrida: <span id="km-counter">0</span> / 1.603 km
         </div>
         <div class="km-progress">
             HB20 Hatch • BH ➔ Itaúnas ➔ BH
@@ -771,6 +1019,14 @@
     </div>
 
     <script>
+        // Lógica do Menu Retrátil (Accordion)
+        document.querySelectorAll('.day-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const daySection = header.parentElement;
+                daySection.classList.toggle('collapsed');
+            });
+        });
+
         // Função Inteligente do Mapa (Aceita Ponto Único ou Rota/Array)
         function updateMap(locations) {
             const mapFrame = document.getElementById('dynamic-map');
@@ -845,11 +1101,10 @@
             }
         });
 
-        // FILTROS
+        // FILTROS COM EXPANSÃO AUTOMÁTICA DOS DIAS CORRESPONDENTES
         const filterBtns = document.querySelectorAll('.filter-btn');
         const timelineItems = document.querySelectorAll('.timeline-item, .places-card.utility-card');
         const daySections = document.querySelectorAll('.day-section');
-        const sectionTitle = document.querySelector('.section-title');
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -857,13 +1112,11 @@
                 btn.classList.add('active');
 
                 const selectedCategory = btn.getAttribute('data-filter');
-                let hasVisibleUtilities = false;
 
                 timelineItems.forEach(item => {
                     const itemCategories = item.getAttribute('data-category') || "";
                     if (selectedCategory === 'all' || itemCategories.includes(selectedCategory)) {
                         item.classList.remove('hidden');
-                        if (item.classList.contains('utility-card')) hasVisibleUtilities = true;
                     } else {
                         item.classList.add('hidden');
                     }
@@ -875,16 +1128,11 @@
                         section.classList.add('hidden');
                     } else {
                         section.classList.remove('hidden');
+                        if (selectedCategory !== 'all') {
+                            section.classList.remove('collapsed'); // Expande o dia se houver busca ativa
+                        }
                     }
                 });
-                
-                if (sectionTitle) {
-                    if (selectedCategory === 'all' || hasVisibleUtilities) {
-                        sectionTitle.classList.remove('hidden');
-                    } else {
-                        sectionTitle.classList.add('hidden');
-                    }
-                }
             });
         });
     </script>
